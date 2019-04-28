@@ -5,6 +5,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <div>Hello, {{name}} !</div>
+    <h1>Статьи</h1>
+    <form method="post">
+        <input type="text" name="title" placeholder="введите заголовок"/>
+        <input type="text" name="text1" placeholder="введите первую чатсь"/>
+        <input type="text" name="text2" placeholder="введите вторую часть"/>
+        <button type="submit">Добавить</button>
+    </form>
+    <div>
+        {{#articles}}
+            <b>{{id}}</b>
+            <span>{{Title}}</span>
+            <i>{{Text1}}</i>
+            <i>{{Text2}}</i>
+        {{/articles}}
+    </div>
 </body>
 </html>

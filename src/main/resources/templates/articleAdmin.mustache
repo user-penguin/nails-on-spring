@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Администрирование статей</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="css/authorAdm.css" rel="stylesheet">
+    <link href="css/topAndBottom.css" rel="stylesheet">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Добавление данных</h4>
+                    <button class="close" type="button" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" action="/article/add_new_article" method="post" id="newArticleForm" enctype="application/json">
+                        <div class="form__container">
+                            <div class="form__inputs">
+                                <input class="form__input" type="text" name="Title" placeholder="Заголовок" required><br><br>
+                                <input class="form__input" type="text" name="Text1" placeholder="Часть 1" required><br><br>
+                                <input class="form__input" type="text" name="Text2" placeholder="Часть 2" required><br><br><br>
+                                <select name="author" required>
+                                    {% for author in authors %}
+                                       <option value="{{author.getId()|e}}">{{author.getName()|e}} </option>
+                                    {% endfor %}
+                                </select>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form__buttons">
+                            <input class="btn btn-info uk-button uk-button-primary top-margin" type="submit" value="Отправить">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myEdit" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Изменение данных</h4>
+                    <button class="close" type="button" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" action="/article/edit_article" method="post" id="editArticleForm" enctype="application/json">
+                        <div class="form__container">
+                            <div class="form__inputs">
+                                <input class="form__input" type="text" id="editTitle" name="editTitle" value=" " placeholder="Заголовок" required><br><br>
+                                <input class="form__input" type="text" id="editText1" name="editText1" placeholder="Часть 1" required><br><br>
+                                <input class="form__input" type="text" id="editText2" name="editText2" placeholder="Часть 2" required><br><br>
+                                <input id="idArticle" name="idArticle" readonly>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form__buttons">
+                            <input class="btn btn-info uk-button uk-button-primary top-margin" type="submit" value="Отправить">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="/author">Авторы</a></li>
+            <li class="nav-item"><a class="nav-link" href="/article">Посты</a></li>
+            <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" id="dropdown08" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a><span class="sr-only">(current)</span>
+                <div class="dropdown-menu" aria-labelledby="dropdown08"><a class="dropdown-item" href="/authorAdmin">Админочка авторов</a><a class="dropdown-item" href="/articleAdmin">Админочка постов</a><a class="dropdown-item" href="/posts">Об авторе</a></div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<input class="form-control input-sm" id="searchString" type="text" onkeyup="tableSearch()" placeholder="Поиск по таблице" aria-controls="example">
+<table class="table table-striped table-bordered" id="authorsTable">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Заголовок</th>
+        <th>Автор</th>
+        <th>
+            <button class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal">Добавить</button>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <td>
+                {{ article.getId() }}
+            </td>
+            <td>
+                {{ article.getTitle() }}
+            </td>
+            <td>
+                {{ article.getAuthor().getName() }}
+            </td>
+            <td>
+                <a class="btn btn-info btn-lg" href='/article/delete_article/{{ article.getId }}' onclick="print("/article/delete_article/"{{ article.getId() }})>Удалить</a>
+                <button class="btn btn-info btn-lg" onclick="fillEditField('{{ article.getTitle }}', '{{ article.getText1 }}', '{{ article.getTitle2 }}', '{{ article.getId() }}')" type="button" data-toggle="modal" data-target="#myEdit">Изменить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<footer class="blog-footer">
+    <p>Blog template built for<a href="https://getbootstrap.com/">Bootstrap</a> by<a href="https://github.com/user-penguin">@user-penguin</a>.<a href="#"> Back to top</a></p>
+</footer>
+<script>
+    function fillEditField(title1, text1, text2, id) {
+        console.log('Я тут')
+        var editTitle = document.getElementById('editTitle');
+        var editText1 = document.getElementById('editText1');
+        var editText2 = document.getElementById('editText2');
+        var idArticle = document.getElementById('idArticle');
+        editTitle.value = title1;
+        editText1.value = text1;
+        editText2.value = text2;
+        idArticle.value = id
+    }
+</script>
+<script>
+    function tableSearch() {
+        var phrase = document.getElementById('searchString');
+        var table = document.getElementById('authorsTable');
+        var regPhrase = new RegExp(phrase.value, 'i');
+        var flag = false;
+        for (var i = 1; i < table.rows.length; i++) {
+            flag = false;
+            for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+                flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+                if (flag) break;
+            }
+            if (flag) {
+                table.rows[i].style.display = "";
+            } else {
+                table.rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
+<script>
+    function print(text) {
+        for (var i = 0; i < 100000; i++)
+        console.log(text);
+    }
+</script>
+
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<script src="assets/js/vendor/holder.min.js"></script>
+<script>
+    Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+    });
+</script>
+</body>
+</html>
