@@ -1,0 +1,15 @@
+.navbar {
+    margin-bottom: 20px;
+}
+
+.blog-footer {
+    position: fixed;
+    padding: 0.5rem 0;
+    height:40px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40;
+    text-align: center;
+    color: #999;
+}
