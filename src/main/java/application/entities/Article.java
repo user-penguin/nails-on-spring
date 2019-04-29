@@ -9,8 +9,11 @@ public class Article {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
+
     @ManyToOne
     @JoinColumn(name = "author")
+    private Author author;
+
     public Author getAuthor() {
         return author;
     }
@@ -19,7 +22,6 @@ public class Article {
         this.author = author;
     }
 
-    private Author author;
     private String Title;
     private String Text1;
     private String Text2;
@@ -31,6 +33,10 @@ public class Article {
         Title = title;
         Text1 = text1;
         Text2 = text2;
+    }
+
+    public Article () {
+
     }
 
     public Integer getId() {

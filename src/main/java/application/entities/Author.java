@@ -20,6 +20,20 @@ public class Author {
     private String MainText;
     private Integer MainPhotoId;
 
+    public Author(String name, String secName, String email, String phone, Integer ranking, String mission, String mainText) {
+        Name = name;
+        SecName = secName;
+        Email = email;
+        Phone = phone;
+        Ranking = ranking;
+        Mission = mission;
+        MainText = mainText;
+    }
+
+    public Author () {
+
+    }
+
     public Integer getId() {
         return id;
     }

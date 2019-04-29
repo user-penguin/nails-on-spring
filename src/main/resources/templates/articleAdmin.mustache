@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="css/authorAdm.css" rel="stylesheet">
     <link href="css/topAndBottom.css" rel="stylesheet">
+    <link href="css/myStyle.css" rel="stylesheet">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -22,9 +23,9 @@
                                 <input class="form__input" type="text" name="Text1" placeholder="Часть 1" required><br><br>
                                 <input class="form__input" type="text" name="Text2" placeholder="Часть 2" required><br><br><br>
                                 <select name="author" required>
-                                    {% for author in authors %}
-                                       <option value="{{author.getId()|e}}">{{author.getName()|e}} </option>
-                                    {% endfor %}
+                                    {{#authors}}
+                                        <option value="{{id}}" {{Name}} </option>
+                                    {{/authors}}
                                 </select>
                                 <br>
                                 <br>
@@ -99,23 +100,16 @@
     </tr>
     </thead>
     <tbody>
-        {% for article in articles %}
-        <tr>
+        {{#article}}
+            <td>{{id}}</td>
+            <td>{{Title}}</td>
+            <td>{{Author.getName}}</td>
             <td>
-                {{ article.getId() }}
+                <a class="btn btn-info btn-lg" href='/article/delete_article/{{id}}')>Удалить</a>
+                <button class="btn btn-info btn-lg" onclick="fillEditField('{{Title}}', '{{Text1}}', '{{Text2}}', '{{id}}')" type="button" data-toggle="modal" data-target="#myEdit">Изменить</button>
             </td>
-            <td>
-                {{ article.getTitle() }}
-            </td>
-            <td>
-                {{ article.getAuthor().getName() }}
-            </td>
-            <td>
-                <a class="btn btn-info btn-lg" href='/article/delete_article/{{ article.getId }}' onclick="print("/article/delete_article/"{{ article.getId() }})>Удалить</a>
-                <button class="btn btn-info btn-lg" onclick="fillEditField('{{ article.getTitle }}', '{{ article.getText1 }}', '{{ article.getTitle2 }}', '{{ article.getId() }}')" type="button" data-toggle="modal" data-target="#myEdit">Изменить</button>
-            </td>
-        </tr>
-        {% endfor %}
+            <option value="{{id}}" {{Name}} </option>
+        {{/article}}
     </tbody>
 </table>
 <footer class="blog-footer">
@@ -152,12 +146,6 @@
                 table.rows[i].style.display = "none";
             }
         }
-    }
-</script>
-<script>
-    function print(text) {
-        for (var i = 0; i < 100000; i++)
-        console.log(text);
     }
 </script>
 
