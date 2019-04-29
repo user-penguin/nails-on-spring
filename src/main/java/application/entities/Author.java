@@ -16,11 +16,13 @@ public class Author {
     private String Email;
     private String Phone;
     private Integer Ranking;
+    private Integer Price;
     private String Mission;
     private String MainText;
     private Integer MainPhotoId;
 
-    public Author(String name, String secName, String email, String phone, Integer ranking, String mission, String mainText) {
+    public Author(String name, String secName, String email, String phone, Integer ranking, Integer Price,
+                  String mission, String mainText) {
         Name = name;
         SecName = secName;
         Email = email;
@@ -32,6 +34,14 @@ public class Author {
 
     public Author () {
 
+    }
+
+    public Integer getPrice() {
+        return Price;
+    }
+
+    public void setPrice(Integer price) {
+        Price = price;
     }
 
     public Integer getId() {

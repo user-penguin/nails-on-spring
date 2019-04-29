@@ -31,4 +31,11 @@ public class IndexController {
         model.put("authors", authors);
         return "articleAdmin";
     }
+
+    @GetMapping("/authorAdmin")
+    public String authorAdmin(Map<String, Object> model) {
+        Iterable<Author> authors = authorRepo.findAll();
+        model.put("authors", authors);
+        return "authorAdmin";
+    }
 }

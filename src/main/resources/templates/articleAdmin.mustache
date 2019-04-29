@@ -5,16 +5,15 @@
     <title>Администрирование статей</title>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/authorAdm.css" rel="stylesheet">
-    <link href="css/topAndBottom.css" rel="stylesheet">
-    <link href="css/myStyle.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/authorAdm.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/topAndBottom.css" rel="stylesheet">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Добавление данных</h4>
                     <button class="close" type="button" data-dismiss="modal">×</button>
-                </div>
+                </div>  
                 <div class="modal-body">
                     <form class="form" action="/article/add_new_article" method="post" id="newArticleForm" enctype="application/json">
                         <div class="form__container">
@@ -100,16 +99,15 @@
     </tr>
     </thead>
     <tbody>
-        {{#article}}
+        {{#articles}}
             <td>{{id}}</td>
             <td>{{Title}}</td>
-            <td>{{Author.getName}}</td>
+<!--            <td></td>-->
             <td>
-                <a class="btn btn-info btn-lg" href='/article/delete_article/{{id}}')>Удалить</a>
+                <a class="btn btn-info btn-lg" href='/article/delete_article/{{id}}'>Удалить</a>
                 <button class="btn btn-info btn-lg" onclick="fillEditField('{{Title}}', '{{Text1}}', '{{Text2}}', '{{id}}')" type="button" data-toggle="modal" data-target="#myEdit">Изменить</button>
             </td>
-            <option value="{{id}}" {{Name}} </option>
-        {{/article}}
+        {{/articles}}
     </tbody>
 </table>
 <footer class="blog-footer">
@@ -117,15 +115,11 @@
 </footer>
 <script>
     function fillEditField(title1, text1, text2, id) {
-        console.log('Я тут')
-        var editTitle = document.getElementById('editTitle');
-        var editText1 = document.getElementById('editText1');
-        var editText2 = document.getElementById('editText2');
-        var idArticle = document.getElementById('idArticle');
-        editTitle.value = title1;
-        editText1.value = text1;
-        editText2.value = text2;
-        idArticle.value = id
+        console.log('Я тут');
+        var editTitle = document.getElementById('editTitle').value=title1;
+        var editText1 = document.getElementById('editText1').value=text1;
+        var editText2 = document.getElementById('editText2').value=text2;
+        var idArticle = document.getElementById('idArticle').value=id;
     }
 </script>
 <script>

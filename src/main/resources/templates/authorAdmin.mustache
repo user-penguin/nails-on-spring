@@ -18,28 +18,28 @@
                     <form class="form" action="/author/add_new_author" method="post" id="newAuthorForm" enctype="application/json">
                         <div class="form__container">
                             <div class="form__inputs">
-                                <input class="form__input" type="text" name="name" placeholder="Имя" required>
+                                <input class="form__input" type="text" name="Name" placeholder="Имя" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="secName" placeholder="Фамилия" required>
+                                <input class="form__input" type="text" name="SecName" placeholder="Фамилия" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="email" name="email" placeholder="Email" required>
+                                <input class="form__input" type="email" name="Email" placeholder="Email" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="tel" name="phone" pattern="^\+7\d{3}\d{7}$" value="+7" maxlength="12" placeholder="Email" required>
+                                <input class="form__input" type="tel" name="Phone" pattern="^\+7\d{3}\d{7}$" value="+7" maxlength="12" placeholder="Email" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="number" name="ranking" maxlength="2" placeholder="Рейтинг" required>
+                                <input class="form__input" type="number" name="Ranking" maxlength="2" placeholder="Рейтинг" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="number" name="price" maxlength="8" placeholder="Стоимость" required>
+                                <input class="form__input" type="number" name="Price" maxlength="8" placeholder="Стоимость" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="mission"  placeholder="Цель регистрации" required>
+                                <input class="form__input" type="text" name="Mission"  placeholder="Цель регистрации" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="mainText"  placeholder="Основной текст" required>
+                                <input class="form__input" type="text" name="MainText"  placeholder="Основной текст" required>
                                 <br>
                                 <br>
                             </div>
@@ -66,28 +66,28 @@
                     <form class="form" action="/author/edit_author" method="post" id="editAuthorForm" enctype="application/json">
                         <div class="form__container">
                             <div class="form__inputs">
-                                <input class="form__input" type="text" name="editName" id="editName" placeholder="Имя" required>
+                                <input class="form__input" type="text" name="EditName" id="editName" placeholder="Имя" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="editSecName" id="editSecName" placeholder="Фамилия" required>
+                                <input class="form__input" type="text" name="EditSecName" id="editSecName" placeholder="Фамилия" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="email" name="editEmail" id="editEmail" placeholder="Email" required>
+                                <input class="form__input" type="email" name="EditEmail" id="editEmail" placeholder="Email" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="tel" name="editPhone" id="editPhone" pattern="^\+7\d{3}\d{7}$" value="+7" maxlength="12" placeholder="Email" required>
+                                <input class="form__input" type="tel" name="EditPhone" id="editPhone" pattern="^\+7\d{3}\d{7}$" value="+7" maxlength="12" placeholder="Email" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="number" name="editRanking" id="editRanking" maxlength="2" placeholder="Рейтинг" required>
+                                <input class="form__input" type="number" name="EditRanking" id="editRanking" maxlength="2" placeholder="Рейтинг" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="number" name="editPrice" id="editPrice" maxlength="8" placeholder="Стоимость" required>
+                                <input class="form__input" type="number" name="EditPrice" id="editPrice" maxlength="8" placeholder="Стоимость" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="editMission" id="editMission"  placeholder="Цель регистрации" required>
+                                <input class="form__input" type="text" name="EditMission" id="editMission"  placeholder="Цель регистрации" required>
                                 <br>
                                 <br>
-                                <input class="form__input" type="text" name="editMainText" id="editMainText"  placeholder="Основной текст" required>
+                                <input class="form__input" type="text" name="EditMainText" id="editMainText"  placeholder="Основной текст" required>
                                 <br>
                                 <br>
                                 <input class="form__input" type="text" name="idAuthor" id="idAuthor"  placeholder="Id автора" readonly>
@@ -139,38 +139,38 @@
     </tr>
     </thead>
     <tbody>
-    {% for author in authors %}
+    {{#authors}}
         <tr>
             <td>
-                {{ author.getName() }}
+                {{Name}}
             </td>
             <td>
-                {{ author.getSecName() }}
+                {{SecName}}
             </td>
             <td>
-                {{ author.getEmail() }}
+                {{Email}}
             </td>
             <td>
-                {{ author.getPhone() }}
+                {{Phone}}
             </td>
             <td>
-                {{ author.getRanking() }}
+                {{Ranking}}
             </td>
             <td>
-                {{ author.getPrice() }}
+                {{Price}}
             </td>
             <td>
-                {{ author.getMission() }}
+                {{Mission}}
             </td>
             <td>
-                {{ author.getMainText() }}
+                {{MainText}}
             </td>
             <td>
-                <a class="btn btn-info btn-lg" href="/author/delete_author/{{ author.getId() }}">Удалить</a>
-                <button class="btn btn-info btn-lg" onclick="fillEditField('{{ author.getName() }}', '{{ author.getSecName() }}', '{{ author.getEmail() }}', '{{ author.getPhone() }}', '{{ author.getRanking() }}', '{{ author.getPrice }}', '{{ author.getMission() }}', '{{ author.getMainText() }}', '{{ author.getId() }}')" type="button" data-toggle="modal" data-target="#editingForm">Изменить</button>
+                <a class="btn btn-info btn-lg" href="/author/delete_author/{{id}}">Удалить</a>
+                <button class="btn btn-info btn-lg" onclick="fillEditField('{{Name}}', '{{SecName}}', '{{Email}}', '{{Phone}}', '{{Ranking}}', '{{Price}}', '{{Mission}}', '{{MainText}}', '{{id}}')" type="button" data-toggle="modal" data-target="#editingForm">Изменить</button>
             </td>
         </tr>
-    {% endfor %}
+    {{/authors}}
     </tbody>
 </table>
 <footer class="blog-footer">
