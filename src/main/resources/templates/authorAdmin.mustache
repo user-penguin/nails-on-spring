@@ -5,8 +5,8 @@
     <title>Администрирование авторов</title>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/authorAdm.css" rel="stylesheet">
-    <link href="css/topAndBottom.css" rel="stylesheet">
+    <link href="/static/css/authorAdm.css" rel="stylesheet">
+    <link href="/static/css/topAndBottom.css" rel="stylesheet">
     <div class="modal fade" id="addingForm" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -15,7 +15,7 @@
                     <button class="close" type="button" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" action="/author/add_new_author" method="post" id="newAuthorForm" enctype="application/json">
+                    <form class="form" action="/author/add_new_author" method="post" id="newAuthorForm">
                         <div class="form__container">
                             <div class="form__inputs">
                                 <input class="form__input" type="text" name="Name" placeholder="Имя" required>
@@ -166,7 +166,7 @@
                 {{MainText}}
             </td>
             <td>
-                <a class="btn btn-info btn-lg" href="/author/delete_author/{{id}}">Удалить</a>
+                <a class="btn btn-danger btn-lg" href="/author/delete_author/{{id}}">Удалить</a>
                 <button class="btn btn-info btn-lg" onclick="fillEditField('{{Name}}', '{{SecName}}', '{{Email}}', '{{Phone}}', '{{Ranking}}', '{{Price}}', '{{Mission}}', '{{MainText}}', '{{id}}')" type="button" data-toggle="modal" data-target="#editingForm">Изменить</button>
             </td>
         </tr>
@@ -213,9 +213,9 @@
 
 <!-- Placed at the end of the document so the pages load faster-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="dist/js/bootstrap.min.js"></script>
-<script src="assets/js/vendor/holder.min.js"></script>
+<script src="/static/assets/js/vendor/popper.min.js"></script>
+<script src="/static/dist/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/vendor/holder.min.js"></script>
 <script>
     Holder.addTheme('thumb', {
         bg: '#55595c',

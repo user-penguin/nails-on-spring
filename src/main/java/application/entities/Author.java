@@ -21,13 +21,14 @@ public class Author {
     private String MainText;
     private Integer MainPhotoId;
 
-    public Author(String name, String secName, String email, String phone, Integer ranking, Integer Price,
+    public Author(String name, String secName, String email, String phone, Integer ranking, Integer price,
                   String mission, String mainText) {
         Name = name;
         SecName = secName;
         Email = email;
         Phone = phone;
         Ranking = ranking;
+        Price = price;
         Mission = mission;
         MainText = mainText;
     }

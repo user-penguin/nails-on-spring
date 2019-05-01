@@ -3,17 +3,53 @@ package application.controllers;
 import application.entities.Author;
 import application.repos.AuthorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.Map;
 
+@Controller
 public class AuthorController {
     @Autowired
     private AuthorRepo authorRepo;
 
+    @GetMapping("/author/delete_author/{id}")
+    public RedirectView deleteAuthor(@PathVariable Integer id) {
+        authorRepo.deleteById(id);
+        return new RedirectView("/authorAdmin");
+    }
+
+    @PostMapping("/author/edit_author")
+    public RedirectView editAuthor(
+            @RequestParam String EditName,
+            @RequestParam String EditSecName,
+            @RequestParam String EditEmail,
+            @RequestParam String EditPhone,
+            @RequestParam Integer EditRanking,
+            @RequestParam Integer EditPrice,
+            @RequestParam String EditMission,
+            @RequestParam String EditMainText,
+            @RequestParam Integer idAuthor
+    ) {
+       Author author = authorRepo.findById(idAuthor).get();
+       author.setName(EditName);
+       author.setName(EditSecName);
+       author.setEmail(EditEmail);
+       author.setPhone(EditPhone);
+       author.setRanking(EditRanking);
+       author.setPrice(EditPrice);
+       author.setMission(EditMission);
+       author.setMainText(EditMainText);
+       authorRepo.save(author);
+       return new RedirectView("/authorAdmin");
+    }
+
     @PostMapping("/author/add_new_author")
-    public String addNewAuthor(
+    public RedirectView addNewAuthor(
             @RequestParam String Name,
             @RequestParam String SecName,
             @RequestParam String Email,
@@ -26,6 +62,6 @@ public class AuthorController {
     ) {
         Author author = new Author(Name, SecName, Email, Phone, Ranking, Price, Mission, MainText);
         authorRepo.save(author);
-        return "authorAdmin";
+        return new RedirectView("/authorAdmin");
     }
 }
