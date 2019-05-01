@@ -18,7 +18,7 @@ public class IndexController {
     @Autowired
     private AuthorRepo authorRepo;
 
-    @GetMapping
+    @GetMapping("/")
     public String main (Map<String, Object> model) {
         return "index";
     }
