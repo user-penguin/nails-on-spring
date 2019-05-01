@@ -27,7 +27,7 @@ public class Article {
     private String Text2;
     private Integer FirstPhotoId;
     private Integer SecondPhotoId;
-    private Integer AuthorId;
+//    private Integer AuthorId;
 
     public Article(String title, String text1, String text2) {
         Title = title;
@@ -86,13 +86,13 @@ public class Article {
     public void setSecondPhotoId(Integer secondPhotoId) {
         SecondPhotoId = secondPhotoId;
     }
-
-    public Integer getAuthorId() {
-        return AuthorId;
-    }
-
-    public void setAuthorId(Integer authorId) {
-        AuthorId = authorId;
-    }
+//
+//    public Integer getAuthorId() {
+//        return AuthorId;
+//    }
+//
+//    public void setAuthorId(Integer authorId) {
+//        AuthorId = authorId;
+//    }
 
 }

@@ -5,8 +5,8 @@
     <title>Администрирование статей</title>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="http://localhost:8080/css/authorAdm.css" rel="stylesheet">
-    <link href="http://localhost:8080/css/topAndBottom.css" rel="stylesheet">
+    <link href="/static/css/authorAdm.css" rel="stylesheet">
+    <link href="/static/css/topAndBottom.css" rel="stylesheet">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -15,7 +15,7 @@
                     <button class="close" type="button" data-dismiss="modal">×</button>
                 </div>  
                 <div class="modal-body">
-                    <form class="form" action="/article/add_new_article" method="post" id="newArticleForm" enctype="application/json">
+                    <form class="form" action="/article/add_new_article" method="post" id="newArticleForm" >
                         <div class="form__container">
                             <div class="form__inputs">
                                 <input class="form__input" type="text" name="Title" placeholder="Заголовок" required><br><br>
@@ -23,7 +23,7 @@
                                 <input class="form__input" type="text" name="Text2" placeholder="Часть 2" required><br><br><br>
                                 <select name="author" required>
                                     {{#authors}}
-                                        <option value="{{id}}" {{Name}} </option>
+                                        <option value="{{id}}"> {{Name}} </option>
                                     {{/authors}}
                                 </select>
                                 <br>
@@ -49,7 +49,7 @@
                     <button class="close" type="button" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" action="/article/edit_article" method="post" id="editArticleForm" enctype="application/json">
+                    <form class="form" action="/article/edit_article" method="post" id="editArticleForm">
                         <div class="form__container">
                             <div class="form__inputs">
                                 <input class="form__input" type="text" id="editTitle" name="editTitle" value=" " placeholder="Заголовок" required><br><br>
@@ -91,8 +91,10 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Заголовок</th>
         <th>Автор</th>
+        <th>Заголовок</th>
+        <th>Начало текста</th>
+        <th>Конец текста</th>
         <th>
             <button class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal">Добавить</button>
         </th>
@@ -100,13 +102,17 @@
     </thead>
     <tbody>
         {{#articles}}
+        <tr>
             <td>{{id}}</td>
+            <td>{{author.Name}} {{author.SecName}}</td>
             <td>{{Title}}</td>
-<!--            <td></td>-->
+            <td>{{Text1}}</td>
+            <td>{{Text2}}</td>
             <td>
                 <a class="btn btn-info btn-lg" href='/article/delete_article/{{id}}'>Удалить</a>
                 <button class="btn btn-info btn-lg" onclick="fillEditField('{{Title}}', '{{Text1}}', '{{Text2}}', '{{id}}')" type="button" data-toggle="modal" data-target="#myEdit">Изменить</button>
             </td>
+        </tr>
         {{/articles}}
     </tbody>
 </table>
@@ -145,9 +151,9 @@
 
 <!-- Placed at the end of the document so the pages load faster-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="assets/js/vendor/popper.min.js"></script>
-<script src="dist/js/bootstrap.min.js"></script>
-<script src="assets/js/vendor/holder.min.js"></script>
+<script src="/static/assets/js/vendor/popper.min.js"></script>
+<script src="/static/dist/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/vendor/holder.min.js"></script>
 <script>
     Holder.addTheme('thumb', {
         bg: '#55595c',

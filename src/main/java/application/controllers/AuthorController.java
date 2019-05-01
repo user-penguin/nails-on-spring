@@ -1,6 +1,8 @@
 package application.controllers;
 
+import application.entities.Article;
 import application.entities.Author;
+import application.repos.ArticleRepo;
 import application.repos.AuthorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +19,17 @@ public class AuthorController {
     @Autowired
     private AuthorRepo authorRepo;
 
+    @Autowired
+    private ArticleRepo articleRepo;
+
     @GetMapping("/author/delete_author/{id}")
     public RedirectView deleteAuthor(@PathVariable Integer id) {
+        Iterable<Article> articles = articleRepo.findAll();
+        for (Article article: articles) {
+            if (article.getAuthor().getId() == id) {
+                articleRepo.delete(article);
+            }
+        }
         authorRepo.deleteById(id);
         return new RedirectView("/authorAdmin");
     }
@@ -37,7 +48,7 @@ public class AuthorController {
     ) {
        Author author = authorRepo.findById(idAuthor).get();
        author.setName(EditName);
-       author.setName(EditSecName);
+       author.setSecName(EditSecName);
        author.setEmail(EditEmail);
        author.setPhone(EditPhone);
        author.setRanking(EditRanking);

@@ -7,10 +7,11 @@ import application.repos.AuthorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Map;
 @Controller
 public class ArticleController {
     @Autowired
@@ -19,30 +20,37 @@ public class ArticleController {
     @Autowired
     private AuthorRepo authorRepo;
 
-    @GetMapping("/article/delete_article")
-    public String deleteArticle(
-            @RequestParam Integer id,
-            Map<String, Object> model
+    @PostMapping("/article/edit_article")
+    public RedirectView editArticle(
+            @RequestParam String editTitle,
+            @RequestParam String editText1,
+            @RequestParam String editText2,
+            @RequestParam Integer idArticle
     ) {
+        Article article = articleRepo.findById(idArticle).get();
+        article.setTitle(editTitle);
+        article.setText1(editText1);
+        article.setText2(editText2);
+        articleRepo.save(article);
+        return new RedirectView("/articleAdmin");
+    }
 
+    @GetMapping("/article/delete_article/{id}")
+    public RedirectView deleteArticle(@PathVariable Integer id) {
         articleRepo.deleteById(id);
-        Iterable<Article> articles = articleRepo.findAll();
-        model.put("articles", articles);
-        return "articleAdmin";
+        return new RedirectView("/articleAdmin");
     }
 
     @PostMapping("/article/add_new_article")
-    public String addNewArticle(
+    public RedirectView addNewArticle(
             @RequestParam String Title,
             @RequestParam String Text1,
             @RequestParam String Text2,
-            @RequestParam Integer AuthorId,
-            Map<String, Object> model
+            @RequestParam Integer author
     ) {
         Article article = new Article(Title, Text1, Text2);
-        article.setAuthor(authorRepo.findById(AuthorId).get());
-
+        article.setAuthor(authorRepo.findById(author).get());
         articleRepo.save(article);
-        return "articleAdmin";
+        return new RedirectView("/articleAdmin");
     }
 }
