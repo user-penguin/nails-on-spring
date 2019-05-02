@@ -17,165 +17,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
-            <div class="jumbotron p-3 p-md-4 text-white rounded bg-info">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/authors">Авторы</a></li>
-                <li class="nav-item"><a class="nav-link" href="/articles">Посты</a></li>
-                <li class="nav-item"><a class="nav-link" href="/registration">Зарегистрироваться</a></li>
-                <li class="nav-item"><a class="nav-link" href="/authorization">Войти</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="dropdown08" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown08">
-                        <a class="dropdown-item" href="/authorAdmin">Админочка авторов</a>
-                        <a class="dropdown-item" href="articleAdmin">Админочка постов</a>
-                        <a class="dropdown-item" href="#">Об авторе</a>
-                    </div>
-                </li>
-            </div>
+            <li class="nav-item"><a class="nav-link" href="/registration">Зарегистрироваться</a></li>
+            <li class="nav-item"><a class="nav-link" href="/login">Войти</a></li>
         </ul>
     </div>
 </nav>
 <div class="container">
     <div class="jumbotron p-3 p-md-4 text-white rounded bg-info">
         <div class="col-md-11 px-0">
-            <h1 class="display-5 font-italic">Всё о ноготочках</h1>
-            <p class="lead my-3">Каждая леди должна иметь возможность позволить себе хороший маникюр. Издревле качественно сделанные ногти отличали простых крестьянок от голубокровных богинь...</p>
-            <p class="lead mb-0"><a class="text-white font-weight-bold" href="#">Продолжить чтение статьи...</a></p>
+            <h1 class="display-5 font-italic">Добро пожаловать!</h1>
+            <p class="lead my-3">Чтобы начать или продолжить пользоваться сайтом, вам необходимо создать новый аккаунт или авторизироваться</p>
+            <div style="text-align: center"><img src="/static/images/dukalis.jpg" class="img-thumbnail" style="max-width: 65%; "></div>
         </div>
-    </div>
-    <div class="carousel slide" id="carouselExampleIndicators" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row mb-2">
-                    <div class="col-md-5">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-danger">Лаки</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Новый вид шлака</a></h3>
-                                <div class="mb-1 text-muted">Nov 27</div>
-                                <p class="card-text mb-auto">Компания Хенкель снова порадовала девочек перед 8 марта</p><a href="/article">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/1.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-success">Дизайн</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Post title</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/2.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Мракобесие</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/3.jpeg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-info">Гели</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="/article">Post title</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/4.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-5">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Фитнес</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/6.jpeg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-success">Измены</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Post title</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/5.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Узоры</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/7.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-success">Разное</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Post title</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/8.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-7">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Фитнес</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/10.jpeg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-success">Измены</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Post title</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/9.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-5">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Ногти</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Секрет на миллион</a></h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/12.jpeg" alt="Card image cap">
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                            <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-success">Мракобесие</strong>
-                                <h3 class="mb-0"><a class="text-dark" href="#">Длина ногтей</a></h3>
-                                <div class="mb-1 text-muted">Nov 11</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/11.jpg" alt="Card image cap">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
     </div>
 </div>
 <footer class="blog-footer">

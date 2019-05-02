@@ -25,7 +25,7 @@ public class IndexController {
 
     @GetMapping("/main")
     public String mainPage() {
-        return "index";
+        return "mainPage";
     }
 
     @GetMapping("/articleAdmin")
