@@ -20,12 +20,14 @@
             <li class="nav-item active"><a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a></li>
             <li class="nav-item"><a class="nav-link" href="/authors">Авторы</a></li>
             <li class="nav-item"><a class="nav-link" href="/articles">Посты</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="dropdown08" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown08"><a class="dropdown-item" href="/authorAdmin">Админочка авторов</a><a class="dropdown-item" href="articleAdmin">Админочка постов</a><a class="dropdown-item" href="#">Об авторе</a></div>
             </li>
         </ul>
     </div>
 </nav>
+<input type="hidden" name="_csrf" value="{{_csrf.token}}" />
 <div class="container">
     <div class="jumbotron p-3 p-md-4 text-white rounded bg-info">
         <div class="col-md-11 px-0">

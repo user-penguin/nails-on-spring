@@ -23,6 +23,11 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/main")
+    public String mainPage() {
+        return "index";
+    }
+
     @GetMapping("/articleAdmin")
     public String articleAdmin(Map<String, Object> model) {
         Iterable<Article> articles = articleRepo.findAll();
