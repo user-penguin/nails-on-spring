@@ -99,6 +99,19 @@
             </td>
             <td>
 
+                <div><img src="/user_images/{{#photo}}{{photo.name}}{{/photo}}" class="rounded mx-auto d-block" alt="здесь могло быть фото"></div>
+            </td>
+            <td>
+                <div>
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                        <input type="file" name="file">
+                        <div class="form__buttons">
+                            <input class="btn btn-info uk-button uk-button-primary top-margin" type="submit" value="Отправить">
+                        </div>
+                    </form>
+                </div>
+
             </td>
         </tr>
         <tr>
@@ -196,16 +209,6 @@
                     data-target="#editingForm">
                 Изменить
             </button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form method="post" enctype="multipart/form-data">
-
-                </form>
-            </td>
-            <td>
-
             </td>
         </tr>
 
