@@ -1,7 +1,9 @@
 package application.controllers;
 
+import application.entities.Author;
 import application.entities.Role;
 import application.entities.User;
+import application.repos.AuthorRepo;
 import application.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,19 +15,12 @@ import java.util.Collections;
 import java.util.Map;
 
 @Controller
-public class AuthorizationController {
+public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
 
-//    @GetMapping("/authorization")
-//    public String authorization() {
-//        return "login";
-//    }
-//
-//    @PostMapping("/authorization")
-//    public String loginUser() {
-//        return "login";
-//    }
+    @Autowired
+    private AuthorRepo authorRepo;
 
     @GetMapping("/registration")
     public String registration() {
@@ -42,13 +37,11 @@ public class AuthorizationController {
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
+        Author author = new Author();
+        authorRepo.save(author);
+        user.setAuthor(author);
         userRepo.save(user);
 
         return "redirect:/login";
     }
-
-//    @GetMapping("/logout")
-//    public RedirectView logout() {
-//        return new RedirectView("/");
-//    }
 }

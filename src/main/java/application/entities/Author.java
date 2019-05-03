@@ -1,9 +1,6 @@
 package application.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Author {
@@ -20,6 +17,18 @@ public class Author {
     private String Mission;
     private String MainText;
     private Integer MainPhotoId;
+
+    @ManyToOne
+    @JoinColumn(name = "photo")
+    public Photo photo;
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
 
     public Author(String name, String secName, String email, String phone, Integer ranking, Integer price,
                   String mission, String mainText) {

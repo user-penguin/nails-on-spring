@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/myStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="/static/css/blog.css" rel="stylesheet">
+    <link href="/static/css/topAndBottom.css" rel="stylesheet">
+
+    <title>Личные данные</title>
+
+    <style type="text/css">
+        .table {
+            width: 50%;
+            margin: auto;
+            position: relative;
+            margin-top: 20px;
+        }
+    </style>
+    <div class="modal fade" id="editingForm" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Изменение данных</h4>
+                    <button class="close" type="button" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" action="/editUserInfo" method="post" id="editAuthorForm" enctype="application/json">
+                        <div class="form__container">
+                            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                            <div class="form__inputs">
+                                <div class="font-weight-normal" style="text-align: center">Имя</div>
+                                <input class="form-control" type="text" name="EditName" id="editName" placeholder="Имя" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Фамилия</div>
+                                <br>
+                                <input class="form-control" type="text" name="EditSecName" id="editSecName" placeholder="Фамилия" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Почта</div>
+                                <input class="form-control" type="email" name="EditEmail" id="editEmail" placeholder="Email" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Номер телефона</div>
+                                <input class="form-control" type="tel" name="EditPhone" id="editPhone" pattern="^\+7\d{3}\d{7}$" value="+7" maxlength="12" placeholder="Телефон" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Рейтинг(смешно, да? вы сами можете поставить рейтинг)</div>
+                                <input class="form-control" type="number" name="EditRanking" id="editRanking" maxlength="2" placeholder="Рейтинг" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Стоимость услуг</div>
+                                <input class="form-control" type="number" name="EditPrice" id="editPrice" maxlength="8" placeholder="Стоимость" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Для чего вы зарегистрировались</div>
+                                <input class="form-control" type="text" name="EditMission" id="editMission"  placeholder="Цель регистрации" required>
+                                <br>
+                                <div class="font-weight-normal" style="text-align: center">Напишите немного о себе</div>
+                                <input class="form-control" type="text" name="EditMainText" id="editMainText"  placeholder="Основной текст" required>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form__buttons">
+                            <input class="btn btn-info uk-button uk-button-primary top-margin" type="submit" value="Отправить">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-info" type="button" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+            <li class="nav-item"><a class="nav-link" href="/registration">Регистрация</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron p-3 p-md-4 text-white rounded bg-info">
+        <div class="col-md-11 px-0">
+            <h1 class="display-5 font-italic" style="text-align: center">Данные профиля</h1>
+            <p class="lead my-3" style="text-align: center">Старайтесь держать данные в актуальном виде, от них зависит ваш успех</p>
+        </div>
+    </div>
+</div>
+<div>
+    <table class="table">
+        {{#author}}
+        <tbody>
+        <tr>
+            <td>
+                Фото
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Имя
+            </td>
+            <td>
+                {{#Name}}
+                    {{Name}}
+                {{/Name}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Фамилия
+            </td>
+            <td>
+                {{#SecName}}
+                    {{SecName}}
+                {{/SecName}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Почта
+            </td>
+            <td>
+                {{#Email}}
+                    {{Email}}
+                {{/Email}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Телефон
+            </td>
+            <td>
+                {{#Phone}}
+                    {{Phone}}
+                {{/Phone}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Рейтинг
+            </td>
+            <td>
+                {{#Ranking}}
+                    {{Ranking}}
+                {{/Ranking}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Стоимость
+            </td>
+            <td>
+                {{#Price}}
+                    {{Price}}
+                {{/Price}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Цель
+            </td>
+            <td>
+                {{#Mission}}
+                    {{Mission}}
+                {{/Mission}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Описание профиля
+            </td>
+            <td>
+                {{#MainText}}
+                    {{MainText}}
+                {{/MainText}}
+            </td>
+        </tr>
+<!--        @todo    запилить фото и его ажах обновлнеие     -->
+        <tr>
+            <td>
+            <button class="btn btn-info btn-lg" onclick="fillEditField(
+                    '{{#Name}}{{Name}}{{/Name}}',
+                    '{{#SecName}}{{SecName}}{{/SecName}}',
+                    '{{#Email}}{{Email}}{{/Email}}',
+                    '{{#Phone}}{{Phone}}{{/Phone}}',
+                    '{{#Ranking}}{{Ranking}}{{/Ranking}}',
+                    '{{#Price}}{{Price}}{{/Price}}',
+                    '{{#Mission}}{{Mission}}{{/Mission}}',
+                    '{{#MainText}}{{MainText}}{{/MainText}}')" type="button" data-toggle="modal"
+                    data-target="#editingForm">
+                Изменить
+            </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="post" enctype="multipart/form-data">
+
+                </form>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+
+        </tbody>
+        {{/author}}
+    </table>
+</div>
+<footer class="blog-footer">
+    <p>Blog template built for<a href="https://getbootstrap.com/">Bootstrap</a> by<a href="https://github.com/user-penguin">@user-penguin</a>.<a href="#"> Back to top</a></p>
+</footer>
+<script>
+    function fillEditField(name, secName, email, phone, ranking, price, mission, mainText, idAuthor) {
+        document.getElementById('editName').value = name;
+        document.getElementById('editSecName').value = secName;
+        document.getElementById('editEmail').value = email;
+        document.getElementById('editPhone').value = phone;
+        document.getElementById('editRanking').value = ranking;
+        document.getElementById('editPrice').value = price;
+        document.getElementById('editMission').value = mission;
+        document.getElementById('editMainText').value = mainText;
+        console.log(idAuthor);
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="/static/assets/js/vendor/popper.min.js"></script>
+<script src="/static/dist/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/vendor/holder.min.js"></script>
+</body>
+</html>

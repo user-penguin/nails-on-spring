@@ -17,13 +17,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
-            <div class="jumbotron p-3 p-md-4 text-white rounded bg-info">
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/authors">Авторы</a></li>
                 <li class="nav-item"><a class="nav-link" href="/articles">Посты</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Выйти</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="dropdown08" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Меню</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown08">
                         <a class="dropdown-item" href="/authorAdmin">Админочка авторов</a>
@@ -31,7 +30,20 @@
                         <a class="dropdown-item" href="#">Об авторе</a>
                     </div>
                 </li>
-            </div>
+                <li class="nav-item">
+                    <form action="/logout" method="post" style="padding-left: 30px">
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                        <input class="btn btn-outline-secondary" type="submit" value="Выйти"/>
+                    </form>
+                </li>
+                {{#user_name}}
+                <li class="nav-item">
+                    <form action="/userInfo" method="post" style="padding-left: 10px">
+                        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                        <input class="btn btn-outline-secondary" type="submit" value="{{user_name}}"/>
+                    </form>
+                </li>
+                {{/user_name}}
         </ul>
     </div>
 </nav>
@@ -53,11 +65,13 @@
                 <div class="row mb-2">
                     <div class="col-md-5">
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                            <img class="card-img-right flex-auto d-none d-md-block" src="images/1.jpg" alt="Card image cap">
                             <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-danger">Лаки</strong>
                                 <h3 class="mb-0"><a class="text-dark" href="#">Новый вид шлака</a></h3>
                                 <div class="mb-1 text-muted">Nov 27</div>
                                 <p class="card-text mb-auto">Компания Хенкель снова порадовала девочек перед 8 марта</p><a href="/article">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/1.jpg" alt="Card image cap">
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-md-7">
@@ -73,11 +87,12 @@
                 <div class="row mb-2">
                     <div class="col-md-6">
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                            <img class="card-img-right flex-auto d-none d-md-block" src="images/3.jpeg" alt="Card image cap">
                             <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Мракобесие</strong>
                                 <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
                                 <div class="mb-1 text-muted">Nov 12</div>
                                 <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/3.jpeg" alt="Card image cap">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -93,11 +108,12 @@
                 <div class="row mb-2">
                     <div class="col-md-5">
                         <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                            <img class="card-img-right flex-auto d-none d-md-block" src="images/6.jpeg" alt="Card image cap">
                             <div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">Фитнес</strong>
                                 <h3 class="mb-0"><a class="text-dark" href="#">Featured post</a></h3>
                                 <div class="mb-1 text-muted">Nov 12</div>
                                 <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p><a href="#">Continue reading</a>
-                            </div><img class="card-img-right flex-auto d-none d-md-block" src="images/6.jpeg" alt="Card image cap">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-7">

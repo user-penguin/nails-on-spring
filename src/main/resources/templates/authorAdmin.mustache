@@ -17,6 +17,8 @@
                 <div class="modal-body">
                     <form class="form" action="/author/add_new_author" method="post" id="newAuthorForm">
                         <div class="form__container">
+                            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+
                             <div class="form__inputs">
                                 <input class="form__input" type="text" name="Name" placeholder="Имя" required>
                                 <br>
@@ -65,6 +67,8 @@
                 <div class="modal-body">
                     <form class="form" action="/author/edit_author" method="post" id="editAuthorForm" enctype="application/json">
                         <div class="form__container">
+                            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+
                             <div class="form__inputs">
                                 <input class="form__input" type="text" name="EditName" id="editName" placeholder="Имя" required>
                                 <br>
@@ -142,32 +146,60 @@
     {{#authors}}
         <tr>
             <td>
-                {{Name}}
+                {{#Name}}
+                    {{Name}}
+                {{/Name}}
             </td>
             <td>
-                {{SecName}}
+                {{#SecName}}
+                    {{SecName}}
+                {{/SecName}}
             </td>
             <td>
-                {{Email}}
+                {{#Email}}
+                    {{Email}}
+                {{/Email}}
             </td>
             <td>
-                {{Phone}}
+                {{#Phone}}
+                    {{Phone}}
+                {{/Phone}}
             </td>
             <td>
-                {{Ranking}}
+                {{#Ranking}}
+                    {{Ranking}}
+                {{/Ranking}}
             </td>
             <td>
-                {{Price}}
+                {{#Price}}
+                    {{Price}}
+                {{/Price}}
             </td>
             <td>
-                {{Mission}}
+                {{#Mission}}
+                    {{Mission}}
+                {{/Mission}}
             </td>
             <td>
-                {{MainText}}
+                {{#MainText}}
+                    {{MainText}}
+                {{/MainText}}
             </td>
             <td>
                 <a class="btn btn-danger btn-lg" href="/author/delete_author/{{id}}">Удалить</a>
-                <button class="btn btn-info btn-lg" onclick="fillEditField('{{Name}}', '{{SecName}}', '{{Email}}', '{{Phone}}', '{{Ranking}}', '{{Price}}', '{{Mission}}', '{{MainText}}', '{{id}}')" type="button" data-toggle="modal" data-target="#editingForm">Изменить</button>
+                <button class="btn btn-info btn-lg" onclick="fillEditField(
+                    '{{#Name}}{{Name}}{{/Name}}',
+                    '{{#SecName}}{{SecName}}{{/SecName}}',
+                    '{{#Email}}{{Email}}{{/Email}}',
+                    '{{#Phone}}{{Phone}}{{/Phone}}',
+                    '{{#Ranking}}{{Ranking}}{{/Ranking}}',
+                    '{{#Price}}{{Price}}{{/Price}}',
+                    '{{#Mission}}{{Mission}}{{/Mission}}',
+                    '{{#MainText}}{{MainText}}{{/MainText}}',
+                    '{{#id}}{{id}}{{/id}}')" type="button" data-toggle="modal"
+                        data-target="#editingForm">
+                    Изменить
+                </button>
             </td>
         </tr>
     {{/authors}}
