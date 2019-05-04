@@ -30,6 +30,14 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/myAjax")
+    public String ajaxCool(Map<String, Object> model) {
+        model.put("authors", authorRepo.findAll());
+        return "ajaxAuthorAdmin";
+    }
+
+
+
     @GetMapping("/main")
     public String mainPage(Authentication authentication, Map<String, Object> model) {
         model.put("user_name", authentication.getName());

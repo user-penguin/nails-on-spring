@@ -23,6 +23,7 @@ public class Author {
     public Photo photo;
 
     public Photo getPhoto() {
+
         return photo;
     }
 
