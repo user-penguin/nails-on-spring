@@ -31,6 +31,7 @@ public class Author {
         this.photo = photo;
     }
 
+    // попытка обмануть часовой пояс
     public Author(String name, String secName, String email, String phone, Integer ranking, Integer price,
                   String mission, String mainText) {
         Name = name;
